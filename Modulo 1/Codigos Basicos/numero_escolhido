@@ -1,0 +1,8 @@
+numero_escolhido=int(input("escolha um numero: "))
+
+
+
+
+for i in range(1,numero_escolhido+1):
+    print(i)
+    
