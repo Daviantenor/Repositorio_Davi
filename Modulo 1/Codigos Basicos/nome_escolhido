@@ -1,0 +1,9 @@
+nome=input("nos diga o seu nome: ")
+numero_escolhido=int(input("qual numero você não sabe? "))
+numero_inicial=int(input("com qual numero voce deseja começar? " ))
+numero_final=int(input("com qual numero voce deseja terminar? " ))
+
+
+
+for i in range(numero_inicial, numero_final+1):
+    print(f"{i} x {numero_escolhido} = {i * numero_escolhido}")
