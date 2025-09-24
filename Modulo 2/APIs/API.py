@@ -1,0 +1,5 @@
+import requests
+
+response=requests.get('https://www.google.com/search?q=pop-up+o+que+%C3%A9&sca_esv=c08fbbc63a498a11&rlz=1C1GCEU_pt-BRBR1173BR1174&ei=1NvTaL2lAZfU1sQP7tCfyAs&oq=pop-up+&gs_lp=Egxnd3Mtd2l6LXNlcnAiB3BvcC11cCAqAggAMgoQABiABBhDGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESPdsUN4DWK0NcAF4AZABAJgBggGgAboGqgEDMC43uAEByAEA-AEBmAIIoALTBsICChAAGLADGNYEGEfCAhMQLhiABBiwAxjRAxhDGMcBGIoFwgINEAAYgAQYsAMYQxiKBcICBhAAGBYYHsICCBAAGIAEGKIEmAMAiAYBkAYKkgcDMS43oAePJrIHAzAuN7gHzgbCBwUwLjcuMcgHEQ&sclient=gws-wiz-serp&safe=active&ssui=on')
+        
+print(response.status_code)
