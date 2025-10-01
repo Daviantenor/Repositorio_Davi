@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sobre Mim — Mini Site</title>
+  <style>
+    :root{--accent:#0d6efd;--bg:#f6f8fb;--card:#fff;--muted:#6c757d}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg);color:#111}
+    .wrap{max-width:1000px;margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;gap:12px}
+    h1{font-size:20px;margin:0}
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 8px 20px rgba(10,10,10,0.06)}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type=text], textarea, input[type=file], select{width:100%;padding:8px 10px;border-radius:8px;border:1px solid #e7eefb;font-size:14px;background:#fff}
+    textarea{min-height:100px;resize:vertical}
+    .row{display:flex;gap:10px}
+    .row .col{flex:1}
+    .btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+    .muted{color:var(--muted);font-size:13px}
+    .preview img{max-width:120px;border-radius:10px}
+    .profile{display:flex;gap:12px;align-items:center}
+    .profile .info{flex:1}
+    .controls{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+    @media (max-width:920px){.grid{grid-template-columns:1fr}.preview{order:2}}
+    @media print{body{background:#fff}.grid, header, .controls{display:none}.wrap{max-width:100%;padding:0}.card{box-shadow:none;border-radius:0}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#6f42c1)"></div>
+      <div>
+        <h1>Mini-site — Sobre mim</h1>
+        <div class="muted">Preencha os campos e veja a visualização do seu “sobre mim”. Sem servidor — tudo no navegador.</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- FORM -->
+      <div class="card">
+        <form id="about-form" onsubmit="return false">
+          <label for="name">Nome</label>
+          <input id="name" type="text" placeholder="Seu nome completo" required>
+
+          <div class="row" style="margin-top:10px">
+            <div class="col">
+              <label for="role">O que você faz</label>
+              <input id="role" type="text" placeholder="Ex: Estudante / Desenvolvedor / Designer">
+            </div>
+            <div style="width:120px">
+              <label for="location">Cidade</label>
+              <input id="location" type="text" placeholder="Ex: São Paulo">
+            </div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="about">Fale um pouco sobre você</label>
+            <textarea id="about" placeholder="Escreva um parágrafo curto que descreva você, seus interesses, metas..."></textarea>
+            <div class="muted" style="text-align:right;font-size:13px;margin-top:6px">Caracteres: <span id="char-count">0</span></div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="photo">Foto (opcional)</label>
+            <input id="photo" type="file" accept="image/*">
+            <div class="muted" style="margin-top:6px">A foto não é enviada — apenas pré-visualizada no seu navegador.</div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="links">Links (separe por vírgula)</label>
+            <input id="links" placeholder="ex: https://github.com/seuusuario, https://linkedin.com/in/seuperfil">
+          </div>
+
+          <div class="controls">
+            <button class="btn" onclick="updatePreview()">Atualizar visualização</button>
+            <button class="btn secondary" onclick="downloadHTML()">Baixar página</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="preview">
+        <div class="card" id="preview-card">
+          <div class="profile">
+            <div id="photo-wrap"><img id="preview-photo" src="" alt="" style="display:none"></div>
+            <div class="info">
+              <h2 id="preview-name">Seu Nome</h2>
+              <div class="muted" id="preview-role">O que você faz</div>
+              <div class="muted" id="preview-location">Cidade</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h3 style="margin:0 0 6px 0">Sobre mim</h3>
+            <div id="preview-about" class="muted">Escreva algo sobre você no formulário e clique em Atualizar visualização.</div>
+          </div>
+
+          <div id="preview-links" style="margin-top:12px"></div>
+
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+            <button class="btn" onclick="window.print()">Imprimir / Salvar PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // elementos
+    const nameEl = document.getElementById('name');
+    const roleEl = document.getElementById('role');
+    const locationEl = document.getElementById('location');
+    const aboutEl = document.getElementById('about');
+    const photoEl = document.getElementById('photo');
+    const linksEl = document.getElementById('links');
+
+    const previewName = document.getElementById('preview-name');
+    const previewRole = document.getElementById('preview-role');
+    const previewLocation = document.getElementById('preview-location');
+    const previewAbout = document.getElementById('preview-about');
+    const previewPhoto = document.getElementById('preview-photo');
+    const previewLinks = document.getElementById('preview-links');
+    const charCount = document.getElementById('char-count');
+
+    // contador de caracteres
+    aboutEl.addEventListener('input', ()=>{
+      charCount.textContent = aboutEl.value.length;
+    });
+
+    // preview da foto
+    photoEl.addEventListener('change', (e)=>{
+      const f = e.target.files[0];
+      if(!f) { previewPhoto.style.display='none'; previewPhoto.src=''; return; }
+      const reader = new FileReader();
+      reader.onload = function(ev){ previewPhoto.src = ev.target.result; previewPhoto.style.display='block'; }
+      reader.readAsDataURL(f);
+    });
+
+    // atualiza visual
+    function updatePreview(){
+      previewName.textContent = nameEl.value.trim() || 'Seu Nome';
+      previewRole.textContent = roleEl.value.trim() || 'O que você faz';
+      previewLocation.textContent = locationEl.value.trim() || 'Cidade';
+      previewAbout.textContent = aboutEl.value.trim() || 'Escreva algo sobre você no formulário e clique em Atualizar visualização.';
+
+      // links
+      previewLinks.innerHTML = '';
+      const raw = linksEl.value.split(',').map(s=>s.trim()).filter(Boolean);
+      if(raw.length){
+        const ul = document.createElement('ul');
+        raw.forEach(u=>{
+          const a = document.createElement('a');
+          a.href = u;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = u;
+          const li = document.createElement('li');
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        previewLinks.appendChild(document.createElement('hr'));
+        const h = document.createElement('div'); h.style.marginTop='8px'; h.textContent='Links:'; h.style.fontWeight='600'; previewLinks.appendChild(h);
+        previewLinks.appendChild(ul);
+      }
+
+      // rolar para preview
+      previewPhoto.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    // baixar página HTML com o conteúdo preenchido
+    function downloadHTML(){
+      // pega o HTML da área de preview (apenas a parte principal)
+      const previewHTML = document.getElementById('preview-card').outerHTML;
+      const styles = Array.from(document.querySelectorAll('style')).map(s=>s.innerHTML).join('\n');
+      const full = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sobre - ${escapeHTML(nameEl.value||'Minha página')}</title><style>${styles}</style></head><body style="background:#fff;padding:24px">${previewHTML}</body></html>`;
+      const blob = new Blob([full], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download = `sobre-${(nameEl.value||'meu-perfil').replace(/\s+/g,'-').toLowerCase()}.html`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    // escape simples
+    function escapeHTML(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // gerar preview inicial
+    updatePreview();
+  </script>
+</body>
+</html>
