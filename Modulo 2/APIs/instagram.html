@@ -1,41 +1,148 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login - Insta Mock</title>
-<style>
-body{font-family:Arial, Helvetica, sans-serif;background:#fafafa;margin:0;display:flex;justify-content:center;align-items:center;height:100vh;color:#262626}
-.login-box{background:#fff;border:1px solid #dbdbdb;width:350px;padding:40px 40px;border-radius:8px;text-align:center}
-.logo{font-family: 'Segoe UI',sans-serif;font-size:32px;font-weight:bold;margin-bottom:30px;color:#111}
-input{width:100%;padding:10px;margin:6px 0;border:1px solid #dbdbdb;border-radius:4px;background:#fafafa}
-button{width:100%;padding:10px;margin-top:12px;background:#0095f6;color:#fff;border:none;border-radius:4px;font-weight:bold;cursor:pointer}
-button:hover{background:#0077cc}
-.divider{display:flex;align-items:center;text-align:center;margin:18px 0;color:#8e8e8e;font-size:13px}
-.divider::before,.divider::after{content:"";flex:1;border-bottom:1px solid #dbdbdb}
-.divider:not(:empty)::before{margin-right:.75em}
-.divider:not(:empty)::after{margin-left:.75em}
-.signup{margin-top:20px;font-size:14px}
-.signup a{text-decoration:none;color:#0095f6;font-weight:600}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Insta Mock</title>
+  <style>
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      color:#262626;
+      overflow:hidden;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position:0% 50%}
+      50% {background-position:100% 50%}
+      100% {background-position:0% 50%}
+    }
+
+    .login-box{
+      background:#fff;
+      border:1px solid #dbdbdb;
+      width:360px;
+      padding:50px 40px;
+      border-radius:16px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+      opacity:0;
+      transform:translateY(50px);
+      animation:slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn{
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .logo{
+      font-family: 'Segoe UI',sans-serif;
+      font-size:36px;
+      font-weight:bold;
+      margin-bottom:30px;
+      color:#111;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin:8px 0;
+      border:1px solid #dbdbdb;
+      border-radius:8px;
+      background:#fafafa;
+      font-size:14px;
+    }
+    input:focus{
+      outline:none;
+      border-color:#0095f6;
+      box-shadow:0 0 4px rgba(0,149,246,0.3);
+    }
+
+    button{
+      width:100%;
+      padding:14px;
+      margin-top:14px;
+      border:none;
+      border-radius:30px;
+      font-weight:bold;
+      font-size:15px;
+      cursor:pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    button::before{
+      content:"";
+      position:absolute;
+      top:0;left:-100%;
+      width:100%;height:100%;
+      background:rgba(255,255,255,0.3);
+      transition:left 0.4s;
+    }
+    button:hover::before{left:0}
+
+    .primary-btn{
+      background: linear-gradient(90deg,#0095f6,#0077cc);
+      color:#fff;
+      box-shadow:0 4px 10px rgba(0,149,246,0.3);
+    }
+    .primary-btn:hover{
+      background: linear-gradient(90deg,#0077cc,#0095f6);
+    }
+
+    .fb-btn{
+      background: linear-gradient(90deg,#4267B2,#2d4373);
+      color:#fff;
+      box-shadow:0 4px 10px rgba(66,103,178,0.3);
+    }
+    .fb-btn:hover{
+      background: linear-gradient(90deg,#2d4373,#4267B2);
+    }
+
+    .divider{
+      display:flex;
+      align-items:center;
+      text-align:center;
+      margin:22px 0;
+      color:#8e8e8e;
+      font-size:13px;
+    }
+    .divider::before,.divider::after{content:"";flex:1;border-bottom:1px solid #dbdbdb}
+    .divider:not(:empty)::before{margin-right:.75em}
+    .divider:not(:empty)::after{margin-left:.75em}
+
+    .signup{
+      margin-top:24px;
+      font-size:14px;
+    }
+    .signup a{
+      text-decoration:none;
+      color:#0095f6;
+      font-weight:600;
+    }
+  </style>
 </head>
 <body>
-<div class="login-box">
-<div class="logo">Insta-Mock</div>
-<form>
-<input type="text" placeholder="Telefone, nome de usuário ou email" required>
-<input type="password" placeholder="Senha" required>
-<button type="submit">Entrar</button>
-</form>
+  <div class="login-box">
+    <div class="logo">Insta-Mock</div>
+    <form>
+      <input type="text" placeholder="Telefone, nome de usuário ou email" required>
+      <input type="password" placeholder="Senha" required>
+      <button type="submit" class="primary-btn">Entrar</button>
+    </form>
 
+    <div class="divider">OU</div>
 
-<div class="divider">OU</div>
+    <button class="fb-btn">Entrar com Facebook</button>
 
-
-<button style="background:#385185">Entrar com Facebook</button>
-
-
-<div class="signup">Não tem uma conta? <a href="#">Cadastre-se</a></div>
-</div>
+    <div class="signup">Não tem uma conta? <a href="#">Cadastre-se</a></div>
+  </div>
 </body>
 </html>
