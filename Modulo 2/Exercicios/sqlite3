@@ -1,0 +1,20 @@
+import sqlite3
+
+banco=sqlite3.connect("banco.db")
+
+cursor=banco.cursor()
+
+#cursor.execute("CREATE TABLE alunos(nome text,idade intereger,serie text)")
+
+
+#cursor.execute("INSERT INTO alunos values('Ronaldo',14,'4°ano')")
+#cursor.execute("INSERT INTO alunos values('Stefany',15,'2°ano')")
+#cursor.execute("INSERT INTO alunos values('Guilherme',13,'1°ano')")
+#cursor.execute("INSERT INTO alunos values('Ezequiel',16,'6°ano')")
+#cursor.execute("INSERT INTO alunos values('Ricardo',11,'6°ano')")
+#cursor.execute("DELETE FROM  alunos WHERE nome='Ricardo'")
+#cursor.execute("UPDATE alunos SET nome='Anderson' WHERE nome='Ezequiel' ")
+banco.commit()
+
+cursor.execute("SELECT* FROM alunos")
+print(cursor.fetchall())
