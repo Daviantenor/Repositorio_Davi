@@ -1,0 +1,21 @@
+import sqlite3
+
+farm=sqlite3.connect("Farmacia.db")
+
+cursor=farm.cursor()
+
+#cursor.execute("CREATE TABLE remédios(nome text,data_f text,data_v text)")
+
+
+#cursor.execute("INSERT INTO remédios values('loratadina','02/02/2022','05/05/2025')")
+#cursor.execute("INSERT INTO remédios values('dipirona','01/03/2017','05/09/2026')")
+#cursor.execute("INSERT INTO remédios values('expec','03/08/2020','09/10/2025')")
+#cursor.execute("INSERT INTO remédios values('amoxilina','01/12/2022','23/11/2030')")
+#cursor.execute("INSERT INTO remédios values('diclofenaco','08/04/2010','24/12/2015')")
+
+#cursor.execute("DELETE FROM  remédios WHERE nome='amoxilina'")
+#cursor.execute("UPDATE remédios SET nome='estomasil' WHERE nome='dipirona' ")
+farm.commit()
+
+#cursor.execute("SELECT* FROM remédios")
+#print(cursor.fetchall())
