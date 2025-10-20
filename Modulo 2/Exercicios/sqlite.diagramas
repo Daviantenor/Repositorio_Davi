@@ -1,0 +1,36 @@
+import sqlite3
+
+farm=sqlite3.connect("aluno.db")
+
+cursor=farm.cursor()
+#cursor.execute("CREATE TABLE aluno(nome text,idade text,livro_desejado text)")
+#cursor.execute("CREATE TABLE autores(nome text,data_de_nascimento,data_de_falecimento text)")
+#cursor.execute("CREATE TABLE livro(nome text,autor text,editora text,ano de publicação text)")
+#cursor.execute("CREATE TABLE preço_do_livro(nome text ,valor text,quantidade_de_livros comprados)")
+
+#inserindo na tabela aluno:
+#cursor.execute("INSERT INTO aluno values('Davis','23 anos','Vendedor de sonhos')")
+#cursor.execute("INSERT INTO aluno values('Jânio','27 anos','Sherlock Holmes')")
+#cursor.execute("INSERT INTO aluno values('Gordon','24 anos','Sherlock Holmes')")
+#cursor.execute("INSERT INTO aluno values('Jason','20 anos','A garota que lia as estrelas ')")
+
+#inserindo na tabela autores:
+#cursor.execute("INSERT INTO autores values('Árthur Conan Doyle','22/05/1859','07/07/1930')")
+#cursor.execute("INSERT INTO autores values('Kiran Millwood Hargrave','21/03/1990 ','indefinido')")
+#cursor.execute("INSERT INTO autores values('Augusto Cury','02/10/1958','indefinido')")
+
+#inserindo na tabela livro:
+#cursor.execute("INSERT INTO livro values('Sherlock Holmes','Arthur conan doyle','HarperCollins','1927')")
+#cursor.execute("INSERT INTO livro values('A garota que lia as estrelas','Kiran Millwood Hargrave','jangada','2019')")
+#cursor.execute("INSERT INTO livro values('vendedor de sonhos','Augusto Cury','Editora planeta','2008')")
+#cursor.execute("INSERT INTO  preço_do_livro values('vendedor de sonhos','20,00 reais','10')")
+#cursor.execute("INSERT INTO  preço_do_livro values('Sherlock Holmes','40,00 reais','26')")
+#cursor.execute("INSERT INTO  preço_do_livro values('vendedor de sonhos','10,00 reais','8')")
+#cursor.execute("DELETE FROM  aluno WHERE nome='Davis'")
+#cursor.execute("UPDATE aluno SET nome='vendedor de sonhos' WHERE nome='(vendedor de sonhos' ")
+farm.commit()
+
+#cursor.execute("SELECT * FROM aluno")
+#print(cursor.fetchall())
+#cursor.execute("SELECT nome FROM aluno")
+#print(cursor.fetchall())
