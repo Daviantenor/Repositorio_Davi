@@ -1,0 +1,60 @@
+import sqlite3
+
+farm=sqlite3.connect("fabrica_programadores.db")
+
+cursor=farm.cursor()
+
+#cursor.execute("CREATE TABLE alunos(id INTEGER PRIMARY KEY AUTOINCREMENT,nome text,idade text,curso)")
+#cursor.execute("CREATE TABLE professores( id INTEGER PRIMARY KEY AUTOINCREMENT,nome,idade)")
+#cursor.execute("CREATE TABLE cursos( id INTEGER PRIMARY KEY AUTOINCREMENT,nome_do_curso,horário)")
+# cursor.execute("CREATE TABLE Matriculas (id_aluno INTEGER,id_curso INTEGER,data INTEGER,id_Matriculas INTEGER,id_professores INTERGER, FOREIGN KEY (id_aluno) REFERENCES Alunos(id),FOREIGN KEY (id_curso) REFERENCES Cursos(id),FOREIGN KEY (id_Matriculas) REFERENCES Matriculas(id),FOREIGN KEY (id_professores) REFERENCES professores(id))")
+
+#inserindo na tabela alunos:
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Arthur','16 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Davi','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Ezequiel','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Gustavo Souza','16 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Isáac','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Isabelle Eduarda','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Isabelle Luisa','16 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('José','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Juan','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Kaua','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Kethleen','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Pedro','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Rebeca','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Roberta','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Vitória','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Stefany','15 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Gustavo Alessandro','16 anos')")
+# cursor.execute("INSERT INTO alunos('nome','idade') values('Maísa','15 anos')")
+#cursor.execute("INSERT INTO alunos('nome','idade') values('Jubileu','17 anos')")
+#inserindo na tabela Professor:
+# cursor.execute("INSERT INTO Professores('nome','idade') values('Ricardo','25 anos')")
+
+# #inserindo na tabela  Matriculas:
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('1','1','01/01/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('2','2','04/09/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('3','1','23/08/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('4','2','21/10/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('5','2','17/05/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('6','1','24/04/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('7','2','30/01/2024','1','1')")
+# cursor.execute("INSERT INTO Matriculas('id_aluno','id_curso','data','id_Matriculas','id_professores') values('8','2','01/02/2024','1','1')")
+
+#cursor.execute("SELECT id_curso='2' FROM Matriculas")
+#print(cursor.fetchall())
+#cursor.execute("DELETE FROM  alunos WHERE id='15'")
+#cursor.execute("UPDATE alunos SET nome='Vitória' WHERE id='15' ")
+
+#inserindo na tabela cursos:
+#cursor.execute("INSERT INTO cursos('nome_do_curso','horário') values('python','08:00-11:50')")
+#cursor.execute("INSERT INTO  cursos('nome_do_curso','horário') values('Duolingo','09:00-11:00')")
+#cursor.execute("INSERT INTO  cursos('nome_do_curso','horário') values('Inteligencia Artificial','05:00-08:00')")
+
+
+
+
+
+
+farm.commit()
