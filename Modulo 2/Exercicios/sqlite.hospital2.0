@@ -1,0 +1,38 @@
+import sqlite3
+
+farm=sqlite3.connect("hospital.db")
+
+cursor=farm.cursor()
+#cursor.execute("CREATE TABLE paciente(nome text,idade integer,doença,problema de saúde)")
+#cursor.execute("CREATE TABLE consultas(paciente text,médico text,data text)")
+#cursor.execute("CREATE TABLE médico(nome text,idade integer,função text)")
+#cursor.execute("CREATE TABLE especialidades(cardiologistas text,cirurgiões text,pediatras text)")
+
+#inserindo na tabela paciente:
+#cursor.execute("INSERT INTO paciente values('Davis','23 anos','gripe','Hérnia')")
+#cursor.execute("INSERT INTO paciente values('Jânio','27 anos','COVID-19','diabetes')")
+#cursor.execute("INSERT INTO paciente values('Gordon','24 anos','dengue','hipertensão')")
+#cursor.execute("INSERT INTO paciente values('Jason','20 anos','câncer','Alzheimer')")
+
+#inserindo na tabela consultas:
+#cursor.execute("INSERT INTO consultas values('Davis','Alcir','07/07/2015')")
+#cursor.execute("INSERT INTO consultas values(' Jânio','Mariana ','05/05/2025')")
+#cursor.execute("INSERT INTO consultas values('Jason','Ana','04/07/1987')")
+
+#inserindo na tabela médico:
+#cursor.execute("INSERT INTO médico values('Alcir','34 anos','cirurgião')")
+#cursor.execute("INSERT INTO médico values('Mariana','23 anos','cardiologista')")
+#cursor.execute("INSERT INTO médico values('Ana','44 anos','pediatra')")
+
+
+#inserindo na tabela especialidades:
+#cursor.execute("INSERT INTO  especialidades values('Mariana','Alcir','Ana')")
+#cursor.execute("INSERT INTO  especialidades values('Maira', 'Osvaldo','Beatriz')")
+#cursor.execute("INSERT INTO  especialidades values('Adilson','Joana','Juliano')")
+#cursor.execute("DELETE FROM  aluno WHERE nome='Davis'")
+#cursor.execute("UPDATE aluno SET nome='vendedor de sonhos' WHERE nome='(vendedor de sonhos' ")
+farm.commit()
+#cursor.execute("SELECT * FROM aluno")
+#print(cursor.fetchall())
+#cursor.execute("SELECT especialidades FROM hospital")
+#print(cursor.fetchall())
