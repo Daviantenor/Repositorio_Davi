@@ -1,0 +1,16 @@
+import flet as ft
+
+def VisuHome(page: ft.Page):
+    texto = ft.Text("Pagina de Home")
+    Barra_pesquisa=ft.TextField(label="Pesquise o que deseja",width=800)
+    
+    voltar = ft.ElevatedButton("< Voltar", on_click=lambda _: page.go('/confirmação'),bgcolor="blue",color="white",width=500)
+
+    return ft.View(
+        route="/home",
+        controls=[
+            texto,Barra_pesquisa,voltar
+        ],
+        vertical_alignment="center",
+        horizontal_alignment="center",
+    )
