@@ -1,0 +1,17 @@
+import flet as ft
+
+def VisuConfirmação(page: ft.Page):
+    page.theme_mode="dark"
+    espaço_nome2=ft.TextField(label="confirme  seu nome",width=500)
+    espaço_senha2=ft.TextField(label="confirme sua senha",width=500)
+    espaço_email2=ft.TextField(label="confirme seu email",width=500)
+    botão2 = ft.ElevatedButton("avançar>", on_click=lambda _: page.go('/home'),bgcolor="red",color="white",width=250)
+    botão3 = ft.ElevatedButton("<voltar", on_click=lambda _: page.go('/'),bgcolor="blue",color="white",width=250)
+    return ft.View(
+        route="/Confirmação",
+        controls=[
+        espaço_nome2,espaço_senha2,espaço_email2,botão2,botão3
+        ],
+        vertical_alignment="center",
+        horizontal_alignment="center",
+    )
