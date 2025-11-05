@@ -1,0 +1,17 @@
+import flet as ft
+
+def VisuCadastro(page: ft.Page):
+    page.theme_mode="dark"
+    espaço_nome=ft.TextField(label="Digite seu nome",width=500)
+    espaço_senha=ft.TextField(label="Digite sua senha",width=500)
+    espaço_email=ft.TextField(label="Digite seu email",width=500)
+    botão = ft.ElevatedButton("avançar >", on_click=lambda _: page.go('/confirmação'),bgcolor="Red",color="white",width=250)
+
+    return ft.View(
+        route="/",
+        controls=[
+        espaço_nome,espaço_senha,espaço_email,botão
+        ],
+        vertical_alignment="center",
+        horizontal_alignment="center",
+    )
